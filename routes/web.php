@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\TripsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'index')->name('home');
+Route::resource('trips', TripsController::class)->middleware('auth');
+
+// Authenticatie Routes
+Route::view('/login', 'auth.login')->name('login')->middleware('guest');
+Route::post('login', LoginController::class)->name('login.post')->middleware('guest');
+Route::get('/logout', LogoutController::class)->name('logout')->middleware('auth');

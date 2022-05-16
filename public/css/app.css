@@ -1,0 +1,160 @@
+@import url(http://fonts.cdnfonts.com/css/nimbus-sans-l);
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  font-family: "Nimbus Sans L", sans-serif;
+}
+
+.navbar {
+  position: fixed;
+  padding: 1.5rem;
+  width: 100vw;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 65%);
+  display: inline-flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+.navbar .nav ul {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  gap: 1em;
+}
+.navbar .nav ul li {
+  list-style-type: none;
+}
+.navbar .nav ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  transition: color 0.2s ease-in-out;
+  text-transform: uppercase;
+}
+.navbar .nav ul li a:hover {
+  color: #8fe507;
+}
+
+.header {
+  min-height: 300px;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  z-index: -1;
+}
+.header > img {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: blur(4px);
+  transform: scale(1.05);
+  position: relative;
+}
+.header > .textbox {
+  background-color: #ffffff;
+  position: absolute;
+  padding: 2em;
+  right: 5%;
+  top: 50%;
+  transform: translate(0, -50%);
+  margin-left: 5%;
+}
+.header > .textbox > h2 {
+  color: #8fe507;
+  margin-bottom: 0.5em;
+  font-size: 3vw;
+}
+.header > .textbox > h4 {
+  color: #000000;
+}
+
+.btn {
+  border: 0;
+  border-radius: 0.15em;
+  padding: 0.4em 1em;
+  transition: background 0.2s ease-in-out;
+  cursor: pointer;
+}
+.btn.btn-primary {
+  background: #8fe507;
+}
+.btn.btn-primary:hover {
+  background: #80cc06;
+}
+.btn.btn-secondary {
+  background: #f0f2f4;
+}
+.btn.btn-secondary:hover {
+  background: #e1e5e9;
+}
+.btn.btn-dark {
+  background: #000000;
+}
+.btn.btn-dark:hover {
+  background: black;
+}
+.btn.btn-light {
+  background: #ffffff;
+}
+.btn.btn-light:hover {
+  background: #f2f2f2;
+}

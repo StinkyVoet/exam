@@ -123,8 +123,19 @@ body {
   margin-bottom: 0.5em;
   font-size: 3vw;
 }
+@media screen and (max-width: 940px) {
+  .header > .textbox > h2 {
+    font-size: 2em;
+  }
+}
 .header > .textbox > h4 {
   color: #000000;
+  font-size: 1.5vw;
+}
+@media screen and (max-width: 940px) {
+  .header > .textbox > h4 {
+    font-size: 1em;
+  }
 }
 
 .btn {

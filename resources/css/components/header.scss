@@ -28,10 +28,17 @@
             color: $primary;
             margin-bottom: .5em;
             font-size: 3vw;
+            @include breakpoint-down(940px) {
+                font-size: 2em;
+            }
         }
 
         > h4 {
             color: $dark;
+            font-size: 1.5vw;
+            @include breakpoint-down(940px) {
+                font-size: 1em;
+            }
         }
     }
 }

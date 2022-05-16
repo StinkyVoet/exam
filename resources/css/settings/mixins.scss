@@ -4,3 +4,9 @@
         background: darken($color, 5%);
     }
 }
+
+@mixin breakpoint-down($breakpoint) {
+    @media screen and (max-width: $breakpoint) {
+        @content
+    }
+}

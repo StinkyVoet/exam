@@ -22,7 +22,7 @@ class LoginController extends Controller
         ]);
         $remember = $request->has('remember_me');
         if(!Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']], $remember)) {
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->withErrors(['msg' => 'Credentials did not match an existing user']);
         }
         return redirect(route('trip'));
     }

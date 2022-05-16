@@ -2,3 +2,12 @@ $primary: #8fe507;
 $secondary: #f0f2f4;
 $light: #ffffff;
 $dark: #000000;
+$danger: #f52626;
+
+body {
+    --color-primary: #{$primary};
+    --color-secondary: #{$secondary};
+    --color-light: #{$light};
+    --color-dark: #{$dark};
+    --color-danger: #{$danger};
+}

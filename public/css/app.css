@@ -1,4 +1,12 @@
 @import url(http://fonts.cdnfonts.com/css/nimbus-sans-l);
+body {
+  --color-primary: #8fe507;
+  --color-secondary: #f0f2f4;
+  --color-light: #ffffff;
+  --color-dark: #000000;
+  --color-danger: #f52626;
+}
+
 /* Box sizing rules */
 *,
 *::before,
@@ -68,7 +76,7 @@ body {
   padding: 1.5rem;
   width: 100vw;
   background: rgb(0, 0, 0);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 65%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 75%);
   display: inline-flex;
   justify-content: space-between;
   font-weight: 600;
@@ -168,4 +176,40 @@ body {
 }
 .btn.btn-light:hover {
   background: #f2f2f2;
+}
+
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  padding: 2.6em;
+  border-radius: 0.3em;
+  width: 50vw;
+}
+@media screen and (max-width: 700px) {
+  .login-container {
+    width: 90%;
+    padding: 2.6em 5vw;
+  }
+}
+.login-container > form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+.login-container > form > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.alert {
+  padding: 0.7em 0.9em;
+  border-radius: 0.2em;
+  border: rgba(0, 0, 0, 0.356) solid 1px;
+  margin-bottom: 1em;
+}
+.alert.alert-danger {
+  background: #f52626;
 }

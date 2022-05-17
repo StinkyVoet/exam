@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
+use function PHPUnit\Framework\isNull;
 
 class TripsController extends Controller
 {
@@ -49,7 +53,13 @@ class TripsController extends Controller
             'start_date' => 'required|date|before:end_date',
             'end_date' => 'required|date|after:start_date',
             'max_registrations' => 'required|integer|min:0|not_in:0',
+            'img' => 'file|mimes:jpg,png,jpeg|mimetypes:image/png,image/jpg,image/jpeg',
         ]);
+
+        // Check of er een file is geupload. Zoja, plaats het in een mapje
+        if($request->hasFile('img')) {
+            $path = $request->file('img')->store('upload/trips', 'public');
+        }
 
         $trip = Trip::create([
             'title' => $validated['title'],
@@ -58,6 +68,7 @@ class TripsController extends Controller
             'start_date' => $validated['start_date'],
             'end_date' => $validated['end_date'],
             'max_registrations' => $validated['max_registrations'],
+            'img' => $path ?? null,
         ]);
 
         return redirect(route('trips.show', $trip));
@@ -104,7 +115,16 @@ class TripsController extends Controller
             'start_date' => 'required|date|before:end_date',
             'end_date' => 'required|date|after:start_date',
             'max_registrations' => 'required|integer|min:0|not_in:0',
+            'img' => 'file|mimes:jpg,png,jpeg|mimetypes:image/png,image/jpg,image/jpeg',
         ]);
+
+        if($request->hasFile('img')) {
+            if($trip->img) {
+                $path = $request->file('img')->storeAs('upload/trips', $trip->img, 'public');
+            } else {
+                $path = $request->file('img')->store('upload/trips', 'public');
+            }
+        }
 
         $trip->title = $validated['title'];
         $trip->destination = $validated['destination'];
@@ -112,6 +132,7 @@ class TripsController extends Controller
         $trip->start_date = $validated['start_date'];
         $trip->end_date = $validated['end_date'];
         $trip->max_registrations = $validated['max_registrations'];
+        $trip->img = $path ?? $trip->img;
         // Alleen opslaan als er data is veranderd
         $trip->isDirty() ? $trip->save() : null;
 

@@ -15,7 +15,8 @@ class Trip extends Model
         'description',
         'start_date',
         'end_date',
-        'max_registrations'
+        'max_registrations',
+        'img',
     ];
 
     protected $casts = [

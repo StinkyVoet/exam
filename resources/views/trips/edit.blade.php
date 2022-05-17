@@ -8,7 +8,7 @@
                 {!! implode('', $errors->all('<div>:message</div>')) !!}
             </div>
         @endif
-        <form action="{{ route('trips.update', $trip) }}" method="post" class="form">
+        <form action="{{ route('trips.update', $trip) }}" method="post" class="form" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="input-group">
@@ -34,6 +34,10 @@
             <div>
                 <label for="max_registrations">Maxmimum aantal inschrijvingen</label>
                 <input type="number" min="1" id="max_registrations" name="max_registrations" value="{{ old('max_registrations') ?? $trip->max_registrations }}" required>
+            </div>
+            <div>
+                <label for="img">Foto <small>(optioneel)</small></label>
+                <input type="file" name="img" id="img" accept="image/png, image/jpeg, image/jpg">
             </div>
             <div>
                 <label for="description">Omschrijving</label>

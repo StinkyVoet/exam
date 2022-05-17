@@ -8,7 +8,7 @@
                 {!! implode('', $errors->all('<div>:message</div>')) !!}
             </div>
         @endif
-        <form action="{{ route('trips.store') }}" method="post" class="form">
+        <form action="{{ route('trips.store') }}" method="post" class="form" enctype="multipart/form-data">
             @csrf
             <div class="input-group">
                 <div>
@@ -36,7 +36,7 @@
             </div>
             <div>
                 <label for="img">Foto <small>(optioneel)</small></label>
-                <input type="file" name="img" id="img">
+                <input type="file" name="img" id="img" accept="image/png, image/jpeg, image/jpg">
             </div>
             <div>
                 <label for="description">Omschrijving</label>

@@ -1,22 +1,27 @@
 .btn {
     border: 0;
     border-radius: .15em;
-    padding: .4em 1em;
+    padding: .5em 1em;
     transition: background 0.2s ease-in-out;
     cursor: pointer;
+    text-decoration: none;
 
     &.btn-{
         &primary {
             @include bgColorAndHover($primary);
+            color: $dark;
         }
         &secondary {
             @include bgColorAndHover($secondary);
+            color: $dark;
         }
         &dark {
             @include bgColorAndHover($dark);
+            color: $light;
         }
         &light {
             @include bgColorAndHover($light);
+            color: $dark;
         }
     }
 }

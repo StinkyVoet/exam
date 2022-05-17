@@ -149,30 +149,35 @@ body {
 .btn {
   border: 0;
   border-radius: 0.15em;
-  padding: 0.4em 1em;
+  padding: 0.5em 1em;
   transition: background 0.2s ease-in-out;
   cursor: pointer;
+  text-decoration: none;
 }
 .btn.btn-primary {
   background: #8fe507;
+  color: #000000;
 }
 .btn.btn-primary:hover {
   background: #80cc06;
 }
 .btn.btn-secondary {
   background: #f0f2f4;
+  color: #000000;
 }
 .btn.btn-secondary:hover {
   background: #e1e5e9;
 }
 .btn.btn-dark {
   background: #000000;
+  color: #ffffff;
 }
 .btn.btn-dark:hover {
   background: black;
 }
 .btn.btn-light {
   background: #ffffff;
+  color: #000000;
 }
 .btn.btn-light:hover {
   background: #f2f2f2;
@@ -204,6 +209,12 @@ body {
   display: flex;
   flex-direction: column;
 }
+.login-container > form > small > a {
+  color: #8fe507;
+}
+.login-container > form > small > a:hover {
+  color: #80cc06;
+}
 
 .alert {
   padding: 0.7em 0.9em;
@@ -213,4 +224,26 @@ body {
 }
 .alert.alert-danger {
   background: #f52626;
+}
+
+.container {
+  margin: 3rem 20vw;
+}
+@media screen and (max-width: 800px) {
+  .container {
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+}
+
+.trips-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.trips-wrapper .trip h4 a {
+  text-decoration: none;
+  color: #000000;
 }

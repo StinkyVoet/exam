@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Trip;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TripsController extends Controller
 {
@@ -13,7 +15,8 @@ class TripsController extends Controller
      */
     public function index()
     {
-        //
+        $trips = Trip::all();
+        return view('trips.index', compact('trips'));
     }
 
     /**
@@ -21,9 +24,10 @@ class TripsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Trip $trip)
     {
-        //
+        Gate::authorize('create', Trip::class);
+        return view('trips.create');
     }
 
     /**
@@ -34,7 +38,27 @@ class TripsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Gate::authorize('create', Trip::class);
+
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'destination' => 'required|string',
+            'description' => 'required|string',
+            'start_date' => 'required|date|before:end_date',
+            'end_date' => 'required|date|after:start_date',
+            'max_registrations' => 'required|integer|min:0|not_in:0',
+        ]);
+
+        $trip = Trip::create([
+            'title' => $validated['title'],
+            'destination' => $validated['destination'],
+            'description' => $validated['description'],
+            'start_date' => $validated['start_date'],
+            'end_date' => $validated['end_date'],
+            'max_registrations' => $validated['max_registrations'],
+        ]);
+
+        return redirect(route('trips.show', $trip));
     }
 
     /**
@@ -43,9 +67,9 @@ class TripsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Trip $trip)
     {
-        //
+        return view('trips.show', compact('trip'));
     }
 
     /**
@@ -54,9 +78,9 @@ class TripsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Trip $trip)
     {
-        //
+        Gate::authorize('edit', Trip::class);
     }
 
     /**
@@ -68,7 +92,7 @@ class TripsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Gate::authorize('update', Trip::class);
     }
 
     /**
@@ -79,6 +103,6 @@ class TripsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Gate::authorize('destroy', Trip::class);
     }
 }

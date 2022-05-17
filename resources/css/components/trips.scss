@@ -1,0 +1,16 @@
+.trips-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: space-between;
+    margin-top: 1rem;
+
+    .trip {
+        h4 {
+            a {
+                text-decoration: none;
+                color: $dark;
+            }
+        }
+    }
+}

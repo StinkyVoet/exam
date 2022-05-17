@@ -7,12 +7,12 @@
                 {!! implode('', $errors->all('<div>:message</div>')) !!}
             </div>
         @endif
-        <h2>Log in</h2>
-        <form action="{{ route('login.post') }}" method="post" class="loginform">
+        <h2>Log in - Admin</h2>
+        <form action="{{ route('admin.login.post') }}" method="post" class="loginform">
             @csrf
             <div>
-                <label for="email">E-mail adres</label>
-                <input type="email" id="email" name="email" value="{{ old('email') }}">
+                <label for="username">Gebruikersnaam</label>
+                <input type="text" id="username" name="username" value="{{ old('username') }}">
             </div>
             <div>
                 <label for="password">Wachtwoord</label>
@@ -23,7 +23,6 @@
                 <input type="checkbox" name="remember_me" id="remember_me">
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
-            <small><a href="{{ route('admin.login') }}">Log in als admin</a></small>
         </form>
     </div>
     <style>

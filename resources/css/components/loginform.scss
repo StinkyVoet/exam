@@ -22,5 +22,15 @@
             display: flex;
             flex-direction: column;
         }
+
+        > small {
+            > a {
+                color: $primary;
+
+                &:hover {
+                    color: darken($primary, 5%);
+                }
+            }
+        }
     }
 }

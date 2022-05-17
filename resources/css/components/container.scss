@@ -1,0 +1,7 @@
+.container {
+    margin: 3rem 20vw;
+    @include breakpoint-down(800px) {
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
+}

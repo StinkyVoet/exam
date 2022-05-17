@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,12 +19,18 @@ class LoginController extends Controller
     {
         $validated = $request->validate([
             'email' => 'email|required',
-            'password' => 'string',
+            'password' => 'required|string',
         ]);
         $remember = $request->has('remember_me');
+
+        $username = User::select('name')->where('email', $validated['email'])->get();
+        if($username === 'admin') {
+            return redirect()->back()->withInput()->withErrors(['msg' => 'Credentials did not match an existing user']);
+        }
+
         if(!Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']], $remember)) {
             return redirect()->back()->withInput()->withErrors(['msg' => 'Credentials did not match an existing user']);
         }
-        return redirect(route('trip'));
+        return redirect(route('trips.index'));
     }
 }

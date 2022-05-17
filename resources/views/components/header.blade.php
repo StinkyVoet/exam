@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header" style="height: {{ $height ?? "" }}">
     <img src="{{ asset('img/header.webp') }}" alt="">
     <div class="textbox">
         <h2>GLR gaat op reis!</h2>

@@ -25,7 +25,7 @@ class Trip extends Model
 
     public function registrants()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot(['identity_number', 'comment']);
     }
 
     public function getHasMaxRegistrantsAttribute()

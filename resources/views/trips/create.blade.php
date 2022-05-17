@@ -35,6 +35,10 @@
                 <input type="number" min="1" id="max_registrations" name="max_registrations" value="{{ old('max_registrations') }}" required>
             </div>
             <div>
+                <label for="img">Foto <small>(optioneel)</small></label>
+                <input type="file" name="img" id="img">
+            </div>
+            <div>
                 <label for="description">Omschrijving</label>
                 <textarea name="description" id="description" rows="10" required>{{ old('description') }}</textarea>
             </div>

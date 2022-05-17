@@ -18,7 +18,21 @@
         <br>
 
         <p>Aantal inschrijvingen: {{ $trip->registrants->count() }}/{{ $trip->max_registrations }}</p>
-        @if(!auth()->user()->is_admin)
+        @if(auth()->user()->is_admin)
+            @foreach ($trip->registrants as $student)
+                @if ($loop->first)
+                    <ul>
+                @endif
+                <li>
+                    <p>{{ $student->name }}</p>
+                    <p>Nummer identiteitsbewijs: {{ $student->pivot->identity_number }}</p>
+                    <p>Opmerkingen: {{ $student->pivot->comment }}</p>
+                </li>
+                @if ($loop->last)
+                    </ul>
+                @endif
+            @endforeach
+        @else
             {{-- Errors In/Uitschrijven --}}
             @if ($errors->hasBag('registration'))
                 <div class="alert alert-danger">

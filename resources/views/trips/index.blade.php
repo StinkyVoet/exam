@@ -10,9 +10,13 @@
         @endif
         <div class="trips-wrapper">
             @foreach ($trips as $trip)
-                <div class="trip">
-                    <h4><a href="{{ route('trips.show', $trip) }}">{{ $trip->title }}</a></h4>
-                </div>
+                <a href="{{ route('trips.show', $trip) }}" class="trip">
+                    <img src="{{ asset($trip->img ? Storage::url($trip->img) : 'img/header.webp') }}" alt="">
+                    <div class="text">
+                        <h4>{{ $trip->title }}</h4>
+                        <p>{{ Str::limit($trip->description, 130, '...') }}</p>
+                    </div>
+                </a>
             @endforeach
         </div>
     </div>

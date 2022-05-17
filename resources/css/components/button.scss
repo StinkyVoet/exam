@@ -23,11 +23,16 @@
             @include bgColorAndHover($light);
             color: $dark;
         }
+        &danger {
+            @include bgColorAndHover($danger);
+            color: $dark;
+        }
     }
 
     &.disabled {
         background: $secondary;
         color: $dark;
+        cursor: default;
 
         &:hover {
             background: $secondary;

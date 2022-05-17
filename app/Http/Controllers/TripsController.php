@@ -82,7 +82,8 @@ class TripsController extends Controller
      */
     public function edit(Trip $trip)
     {
-        Gate::authorize('edit', Trip::class);
+        Gate::authorize('update', Trip::class);
+        return view('trips.edit', compact('trip'));
     }
 
     /**
@@ -92,9 +93,29 @@ class TripsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Trip $trip)
     {
         Gate::authorize('update', Trip::class);
+
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'destination' => 'required|string',
+            'description' => 'required|string',
+            'start_date' => 'required|date|before:end_date',
+            'end_date' => 'required|date|after:start_date',
+            'max_registrations' => 'required|integer|min:0|not_in:0',
+        ]);
+
+        $trip->title = $validated['title'];
+        $trip->destination = $validated['destination'];
+        $trip->description = $validated['description'];
+        $trip->start_date = $validated['start_date'];
+        $trip->end_date = $validated['end_date'];
+        $trip->max_registrations = $validated['max_registrations'];
+        // Alleen opslaan als er data is veranderd
+        $trip->isDirty() ? $trip->save() : null;
+
+        return redirect(route('trips.show', $trip));
     }
 
     /**
@@ -103,8 +124,11 @@ class TripsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Trip $trip)
     {
-        Gate::authorize('destroy', Trip::class);
+        Gate::authorize('delete', Trip::class);
+
+        $trip->delete();
+        return redirect(route('trips.index'));
     }
 }

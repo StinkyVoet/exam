@@ -1,7 +1,23 @@
 form.form {
     display: flex;
     flex-direction: column;
-    gap: .3rem;
+    gap: .4rem;
+
+    div {
+        &.input-group {
+            display: flex;
+            gap: .7rem;
+
+            > div {
+                flex: 1 0;
+            }
+        }
+
+        > input,
+        > textarea {
+            width: 100%;
+        }
+    }
 
     textarea {
         resize: vertical;

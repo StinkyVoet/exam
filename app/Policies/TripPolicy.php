@@ -51,7 +51,7 @@ class TripPolicy
      * @param  \App\Models\Trip  $trip
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Trip $trip)
+    public function update(User $user)
     {
         return $user->id === 1;
     }
@@ -63,7 +63,7 @@ class TripPolicy
      * @param  \App\Models\Trip  $trip
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Trip $trip)
+    public function delete(User $user)
     {
         return $user->id === 1;
     }

@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('#1Geheim'),
             'is_admin' => 1,
         ]);
-        \App\Models\User::factory(3)->create();
+        \App\Models\User::factory(3)->create(['password' => Hash::make('password')]);
         \App\Models\Trip::factory(10)->create();
     }
 }

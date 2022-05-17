@@ -24,5 +24,14 @@
             color: $dark;
         }
     }
+
+    &.disabled {
+        background: $secondary;
+        color: $dark;
+
+        &:hover {
+            background: $secondary;
+        }
+    }
 }
 

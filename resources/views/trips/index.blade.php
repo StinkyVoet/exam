@@ -3,7 +3,7 @@
 @section('title', 'Reizen')
 
 @section('content')
-    @include('components.header')
+    <x-header />
     <div class="container">
         @if(auth()->user()->is_admin)
             <a href="{{ route('trips.create') }}" class="btn btn-primary">Reis aanmaken</a>

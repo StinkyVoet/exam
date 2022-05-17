@@ -106,6 +106,7 @@ body {
   overflow: hidden;
   position: relative;
   z-index: -1;
+  margin-bottom: 1rem;
 }
 .header > img {
   z-index: -1;
@@ -182,6 +183,13 @@ body {
 .btn.btn-light:hover {
   background: #f2f2f2;
 }
+.btn.disabled {
+  background: #f0f2f4;
+  color: #000000;
+}
+.btn.disabled:hover {
+  background: #f0f2f4;
+}
 
 .login-container {
   position: absolute;
@@ -227,7 +235,7 @@ body {
 }
 
 .container {
-  margin: 3rem 20vw;
+  margin: 2rem 20vw;
 }
 @media screen and (max-width: 800px) {
   .container {
@@ -246,4 +254,17 @@ body {
 .trips-wrapper .trip h4 a {
   text-decoration: none;
   color: #000000;
+}
+
+.item-actions {
+  margin: 0.3rem 0.6rem;
+}
+
+form.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+form.form textarea {
+  resize: vertical;
 }

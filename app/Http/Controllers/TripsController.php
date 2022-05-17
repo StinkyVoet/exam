@@ -15,7 +15,9 @@ class TripsController extends Controller
      */
     public function index()
     {
+        // Haal alle reizen op
         $trips = Trip::all();
+
         return view('trips.index', compact('trips'));
     }
 

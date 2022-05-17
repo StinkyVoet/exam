@@ -22,10 +22,15 @@ class LoginController extends Controller
         ]);
         $remember = $request->has('remember_me');
 
+        // Check of de ingevoerde gegevens kloppen
         if($validated['username'] !== 'admin' || $validated['password'] !== '#1Geheim') {
             return redirect()->back()->withErrors(['msg' => 'Credentials did not match an existing user']);
         }
-        Auth::loginUsingId(1);
+
+        // Check of de login lukt
+        if(!Auth::loginUsingId(1)) {
+            return redirect()->back()->withErrors(['msg' => 'Credentials did not match an existing user']);
+        }
 
         return redirect(route('trips.index'));
     }

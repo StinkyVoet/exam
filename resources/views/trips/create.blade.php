@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-header height="300px" title="Reis aanmaken" undertitle=""/>
+    <x-header height="350px" title="Reis aanmaken" undertitle=""/>
     <div class="container">
         @if ($errors->any())
             <div class="alert alert-danger">

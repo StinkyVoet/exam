@@ -3,7 +3,7 @@
 @section('title', $trip->title)
 
 @section('content')
-    <x-header height="300px" :title="$trip->title" :undertitle="'Bestemming: '.$trip->destination"/>
+    <x-header height="350px" :title="$trip->title" :undertitle="'Bestemming: '.$trip->destination"/>
     <div class="item-actions">
         @if(auth()->user()->is_admin)
                 <a href="{{ route('trips.edit', $trip) }}" class="btn btn-primary">Aanpassen</a>

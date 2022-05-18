@@ -19,5 +19,8 @@
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.51.0",
         "sass-loader": "^12.6.0"
+    },
+    "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^34.0.0"
     }
 }

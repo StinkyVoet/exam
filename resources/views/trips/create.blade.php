@@ -2,6 +2,9 @@
 
 @section('content')
     <x-header height="350px" title="Reis aanmaken" undertitle=""/>
+    <div class="item-actions">
+        <a href="{{ route('trips.index') }}" class="btn btn-secondary">Terug</a>
+    </div>
     <div class="container">
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -40,7 +43,7 @@
             </div>
             <div>
                 <label for="description">Omschrijving</label>
-                <textarea name="description" id="description" rows="10" required>{{ old('description') }}</textarea>
+                <x-ck-editor.classic name="description" required="true">{{ old('description') }}</x-ck-editor.classic>
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Aanmaken</button>

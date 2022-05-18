@@ -5,13 +5,14 @@
 @section('content')
     <x-header height="350px" :title="$trip->title" :undertitle="'Bestemming: '.$trip->destination" :img="$trip->img"/>
     <div class="item-actions">
+        <a href="{{ route('trips.index') }}" class="btn btn-secondary">Terug</a>
         @if(auth()->user()->is_admin)
                 <a href="{{ route('trips.edit', $trip) }}" class="btn btn-primary">Aanpassen</a>
                 <form action="{{ route('trips.destroy', $trip) }}" method="post">@csrf @method('delete')<button type="submit" class="btn btn-danger">Verwijderen</button></form>
         @endif
     </div>
     <div class="container">
-        <p>{{ $trip->description }}</p>
+        <p>{!! $trip->description !!}</p>
         <br>
         <p>Begindatum: {{ $trip->start_date->format("l, d F Y") }}</p>
         <p>Einddatum: {{ $trip->end_date->format("l, d F Y") }}</p>
@@ -39,6 +40,7 @@
                     <div>{{ $error->registration }}</div>
                 </div>
             @endif
+
             @if (auth()->user()->hasTrip($trip))
                 <a href="{{ route('trips.unregister', $trip) }}" class="btn btn-primary">Uitschrijven</a>
             @else
@@ -46,7 +48,9 @@
                     <form action="{{ route('trips.register', $trip) }}" method="post" class="form">
                         @csrf
                         <input type="text" name="identity_number" id="identity_number" placeholder="Identiteitsbewijs nummer" value="{{ old('identity_number') }}" required>
-                        <textarea name="comment" id="comment" rows="5" placeholder="Opmerkingen (denk aan dieet, lichamelijke klachten)" required>{{ old('comment') }}</textarea>
+                        <x-ck-editor.classic name="comment" placeholder="Opmerkingen (denk aan dieet, lichamelijke klachten)">
+                            {{ old('comment') }}
+                        </x-ck-editor.classic>
                         <button class="btn btn-primary" type="submit">Inschrijven</button>
                     </form>
                 @else

@@ -53,7 +53,7 @@ class TripsController extends Controller
             'start_date' => 'required|date|before:end_date',
             'end_date' => 'required|date|after:start_date',
             'max_registrations' => 'required|integer|min:0|not_in:0',
-            'img' => 'file|mimes:jpg,png,jpeg|mimetypes:image/png,image/jpg,image/jpeg',
+            'img' => 'file|mimes:jpg,png,jpeg,webp|mimetypes:image/png,image/jpg,image/jpeg,image/webp',
         ]);
 
         // Check of er een file is geupload. Zoja, plaats het in een mapje
@@ -115,7 +115,7 @@ class TripsController extends Controller
             'start_date' => 'required|date|before:end_date',
             'end_date' => 'required|date|after:start_date',
             'max_registrations' => 'required|integer|min:0|not_in:0',
-            'img' => 'file|mimes:jpg,png,jpeg|mimetypes:image/png,image/jpg,image/jpeg',
+            'img' => 'file|mimes:jpg,png,jpeg,webp|mimetypes:image/png,image/jpg,image/jpeg,image/webp',
         ]);
 
         if($request->hasFile('img')) {

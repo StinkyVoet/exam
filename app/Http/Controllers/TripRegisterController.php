@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Trip;
 use Illuminate\Http\Request;
+use Illuminate\Support\MessageBag;
 
 class TripRegisterController extends Controller
 {
@@ -33,7 +34,7 @@ class TripRegisterController extends Controller
         return redirect()->back();
     }
 
-    public function unregister(Trip $trip)
+    public function unregister(Trip $trip, MessageBag $message_bag)
     {
         // check of geregistreerd
         if(!$trip->registrants->contains(auth()->id())) {

@@ -14,7 +14,7 @@
                     <img src="{{ asset($trip->img ? Storage::url($trip->img) : 'img/header.webp') }}" alt="">
                     <div class="text">
                         <h4>{{ $trip->title }}</h4>
-                        <p>{{ Str::limit($trip->description, 130, '...') }}</p>
+                        <div>{!! Str::limit($trip->description, 100, '...') !!}</div>
                     </div>
                 </a>
             @endforeach

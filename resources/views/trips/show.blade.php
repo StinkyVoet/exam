@@ -27,17 +27,17 @@
                 <li>
                     <p>{{ $student->name }}</p>
                     <p>Nummer identiteitsbewijs: {{ $student->pivot->identity_number }}</p>
-                    <p>Opmerkingen: {{ $student->pivot->comment }}</p>
+                    <p>Opmerkingen: {!! $student->pivot->comment !!}</p>
                 </li>
                 @if ($loop->last)
                     </ul>
                 @endif
             @endforeach
         @else
-            {{-- Errors In/Uitschrijven --}}
-            @if ($errors->hasBag('registration'))
+        {{-- Errors In/Uitschrijven --}}
+        @if ($errors->has('registration'))
                 <div class="alert alert-danger">
-                    <div>{{ $error->registration }}</div>
+                    <div>{{ $errors->get('registration')[0] }}</div>
                 </div>
             @endif
 

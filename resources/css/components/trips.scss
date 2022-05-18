@@ -51,7 +51,7 @@
             transition: transform .2s ease-in-out;
             z-index: -1;
 
-            > p {
+            > div {
                 --max-lines: 3;
                 max-height: calc(1.4rem * var(--max-lines));
                 width: 100%;

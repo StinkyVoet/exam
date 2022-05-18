@@ -1,1 +1,1 @@
-<textarea id="editor" name="{{ $name }}" {{ $required }} style="display: none" placeholder="{{ $placeholder }}">{{ $slot }}</textarea>
+<textarea id="editor" name="{{ $name }}" {{ $required ?? null }} style="display: none" placeholder="{{ $placeholder }}">{{ $slot }}</textarea>

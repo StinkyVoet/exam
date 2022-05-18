@@ -1,5 +1,4 @@
 <div class="navbar">
-    <div class="logoWrapper">GLR</div>
     <nav class="nav">
         <ul>
             <li><a href="{{ route('home') }}">Home</a></li>

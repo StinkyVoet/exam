@@ -39,11 +39,13 @@
             </div>
             <div>
                 <label for="img">Foto <small>(optioneel)</small></label>
-                <input type="file" name="img" id="img" accept="image/png, image/jpeg, image/jpg">
+                <input type="file" name="img" id="img" accept="image/png, image/jpeg, image/jpg, image/webp">
             </div>
             <div>
                 <label for="description">Omschrijving</label>
-                <x-ck-editor.classic name="description" required="true">{{ old('description') }}</x-ck-editor.classic>
+                <x-ck-editor.classic name="description" required="true">
+                    {{ old('description') }}
+                </x-ck-editor.classic>
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Aanmaken</button>

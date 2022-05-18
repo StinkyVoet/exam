@@ -118,10 +118,13 @@ class TripsController extends Controller
             'img' => 'file|mimes:jpg,png,jpeg,webp|mimetypes:image/png,image/jpg,image/jpeg,image/webp',
         ]);
 
+        // Check of er een file is geupload, zoja, upload
         if($request->hasFile('img')) {
             if($trip->img) {
+                // Als er al een image bestaat, die vervangen
                 $path = $request->file('img')->storeAs('upload/trips', $trip->img, 'public');
             } else {
+                // zoniet, maak een nieuw bestand
                 $path = $request->file('img')->store('upload/trips', 'public');
             }
         }

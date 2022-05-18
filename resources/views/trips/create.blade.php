@@ -6,11 +6,13 @@
         <a href="{{ route('trips.index') }}" class="btn btn-secondary">Terug</a>
     </div>
     <div class="container">
+        {{-- Errors --}}
         @if ($errors->any())
             <div class="alert alert-danger">
                 {!! implode('', $errors->all('<div>:message</div>')) !!}
             </div>
         @endif
+
         <form action="{{ route('trips.store') }}" method="post" class="form" enctype="multipart/form-data">
             @csrf
             <div class="input-group">

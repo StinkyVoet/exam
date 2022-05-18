@@ -41,6 +41,7 @@ class TripPolicy
      */
     public function create(User $user)
     {
+        // True als gebruiker admin account is
         return $user->id === 1;
     }
 

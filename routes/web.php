@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Homepagina
 Route::view('/', 'index')->name('home');
+
+// Reizen Routes
 Route::middleware('auth')->group(function () {
     Route::resource('trips', TripsController::class)->middleware('auth');
     Route::post('trips/{trip}/register', [TripRegisterController::class, 'register'])->name('trips.register');
